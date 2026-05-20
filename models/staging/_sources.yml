@@ -1,0 +1,139 @@
+sources:
+  - name: relata_raw
+    database: RELATA_RAW
+    schema: PUBLIC
+    description: Transactional data from Postgres database
+    tables:
+      - name: accounts
+        description: Raw accounts data
+        columns:
+          - name: account_id
+            description: unique ID for account
+            tests:
+              - unique
+              - not_null
+          - name: company_name
+            tests:
+              - not_null
+          - name: industry
+          - name: company_size
+          - name: country
+          - name: created_at
+            tests:
+              - not_null
+          - name: updated_at
+
+      - name: plans
+        description: Raw plans data
+        columns:
+          - name: plan_id
+            tests:
+              - unique
+              - not_null
+          - name: plan_name
+            tests:
+              - not_null
+          - name: base_price
+          - name: price_per_seat
+          - name: max_seats
+
+      - name: users
+        description: Raw users data
+        columns:
+          - name: user_id
+            tests:
+              - unique
+              - not_null
+          - name: account_id
+            tests:
+              - not_null
+          - name: email
+            tests:
+              - unique
+              - not_null
+          - name: first_name
+          - name: last_name
+          - name: role
+            tests:
+              - accepted_values:
+                  arguments: 
+                    values: ["admin", "member"]
+          - name: created_at
+          - name: is_active
+
+      - name: subscriptions
+        columns:
+          - name: subscription_id
+            tests:
+              - unique
+              - not_null
+          - name: account_id
+            tests:
+              - not_null
+          - name: plan_id
+            tests:
+              - not_null
+          - name: status
+            tests:
+              - accepted_values:
+                  arguments: 
+                    values: ["active", "cancelled"]
+          - name: seat_count
+          - name: monthly_amount
+          - name: start_date
+          - name: end_date
+          - name: created_at
+
+      - name: subscription_events
+        columns:
+          - name: event_id
+            tests:
+              - unique
+              - not_null
+          - name: subscription_id
+            tests:
+              - not_null
+          - name: account_id
+            tests:
+              - not_null
+          - name: event_type
+            tests:
+              - accepted_values:
+                  arguments: 
+                    values: ["new","upgrade",
+                      "downgrade",
+                      "expansion",
+                      "contraction",
+                      "churn",
+                      "reactivation",
+                    ]
+          - name: from_plan_id
+          - name: to_plan_id
+          - name: from_seats
+          - name: to_seats
+          - name: from_mrr
+          - name: to_mrr
+          - name: event_date
+          - name: created_at
+
+      - name: invoices
+        columns:
+          - name: invoice_id
+            tests:
+              - unique
+              - not_null
+          - name: account_id
+            tests:
+              - not_null
+          - name: subscription_id
+            tests:
+              - not_null
+          - name: invoice_date
+          - name: amount
+          - name: status
+            tests:
+              - accepted_values:
+                  arguments: 
+                    values: ["paid", "failed"]
+          - name: paid_at
+          - name: created_at

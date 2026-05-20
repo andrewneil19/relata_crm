@@ -1,0 +1,150 @@
+models:
+  - name: stg_accounts
+    description: "One row per account (company) in Relata CRM"
+    columns:
+      - name: account_id
+        tests:
+          - not_null
+          - unique
+      - name: company_name
+        tests:
+          - not_null
+      - name: industry
+      - name: company_size
+      - name: country
+      - name: created_at
+        tests:
+          - not_null
+      - name: updated_at
+
+  - name: stg_plans
+    description: "One row per subscription plan"
+    columns:
+      - name: plan_id
+        tests:
+          - not_null
+          - unique
+      - name: plan_name
+        tests:
+          - not_null
+      - name: base_price
+      - name: price_per_seat
+      - name: max_seats
+
+  - name: stg_users
+    description: "One row per user, linked to an account"
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
+      - name: account_id
+        tests:
+          - not_null
+          - relationships:
+              arguments: 
+                to: ref('stg_accounts')
+                field: account_id
+      - name: email
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+      - name: last_name
+      - name: role
+        tests:
+          - accepted_values:
+              arguments: 
+                values: ['admin', 'member']
+      - name: created_at
+      - name: is_active
+
+  - name: stg_subscriptions
+    description: "One row per subscription"
+    columns:
+      - name: subscription_id
+        tests:
+          - not_null
+          - unique
+      - name: account_id
+        tests:
+          - not_null
+          - relationships:
+              arguments: 
+                to: ref('stg_accounts')
+                field: account_id
+      - name: plan_id
+        tests:
+          - not_null
+          - relationships:
+              arguments: 
+                to: ref('stg_plans')
+                field: plan_id
+      - name: status
+        tests:
+          - accepted_values:
+              arguments: 
+                values: ['active', 'cancelled']
+      - name: seat_count
+      - name: monthly_amount
+      - name: start_date
+      - name: end_date
+      - name: created_at
+
+  - name: stg_subscription_events
+    description: "One row per lifecycle event on a subscription"
+    columns:
+      - name: event_id
+        tests:
+          - not_null
+          - unique
+      - name: subscription_id
+        tests:
+          - not_null
+          - relationships:
+              arguments: 
+                to: ref('stg_subscriptions')
+                field: subscription_id
+      - name: account_id
+        tests:
+          - not_null
+      - name: event_type
+        tests:
+          - accepted_values:
+              arguments: 
+                values: ['new', 'upgrade', 'downgrade', 'expansion', 'contraction', 'churn', 'reactivation']
+      - name: from_plan_id
+      - name: to_plan_id
+      - name: from_seats
+      - name: to_seats
+      - name: from_mrr
+      - name: to_mrr
+      - name: event_date
+      - name: created_at
+
+  - name: stg_invoices
+    description: "One row per invoice."
+    columns:
+      - name: invoice_id
+        tests:
+          - not_null
+          - unique
+      - name: account_id
+        tests:
+          - not_null
+      - name: subscription_id
+        tests:
+          - not_null
+          - relationships:
+              arguments: 
+                to: ref('stg_subscriptions')
+                field: subscription_id
+      - name: invoice_date
+      - name: amount
+      - name: status
+        tests:
+          - accepted_values:
+              arguments: 
+                values: ['paid', 'failed']
+      - name: paid_at
+      - name: created_at
