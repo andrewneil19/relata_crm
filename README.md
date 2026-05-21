@@ -25,18 +25,18 @@ Relata CRM is a fictional B2B SaaS company selling subscription-based software t
 This project was designed to answer the following business questions:
  
 **Revenue**
-- What is our Monthly Recurring Revenue (MRR)? MRR is the predictable, normalised revenue a SaaS company expects to receive each month from active subscriptions — the core financial metric of any subscription business.
+- What is our Monthly Recurring Revenue (MRR)? MRR is the predictable, normalised revenue a SaaS company expects to receive each month from active subscriptions. MRR is the core financial metric of any subscription business.
 - How is MRR trending over time, and what is our Annual Run Rate (ARR)?
-- Which plan tier — Starter, Pro, or Enterprise — drives the most revenue?
+- Which plan tier - Starter, Pro, or Enterprise - drives the most revenue?
 **Subscriptions**
 - How many active subscriptions do we have, and how has that grown over time?
-- What is our churn rate — the percentage of subscriptions that have cancelled?
+- What is our churn rate (the percentage of subscriptions that have cancelled)?
 - How are subscriptions distributed across plan tiers?
 **Customers**
 - Which industries and countries are our largest markets?
 - What is the average age of an active subscription?
-- How does seat utilisation vary across plan tiers?
-These questions shaped every modelling decision in the project — from which intermediate models to build, to which metrics to pre-calculate in the mart layer, to which visuals to include in the Power BI report.
+- How does seat utilization vary across plan tiers?
+These questions shaped every modeling decision in the project, from which intermediate models to build, to which metrics to pre-calculate in the mart layer, to which visuals to include in the Power BI report.
  
 ## Dataset
  
