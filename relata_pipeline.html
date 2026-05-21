@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Relata CRM Pipeline</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #F0F2F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .wrapper {
+    width: 1020px;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 40px rgba(0,0,0,0.05);
+    padding: 48px 52px 40px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding-bottom: 36px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid #F3F4F6;
+  }
+
+  .header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    font-size: 13.5px;
+    color: #374151;
+    font-weight: 400;
+  }
+
+  /* Pipeline */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  /* Tool card */
+  .card {
+    width: 152px;
+    background: #fff;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 22px 14px 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-wrap {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+    background: #F9FAFB;
+    border: 1px solid #F3F4F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-wrap img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+  }
+
+  /* Fallback text if logo fails */
+  .logo-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: monospace;
+    letter-spacing: -1px;
+  }
+
+  .tool-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.1px;
+  }
+
+  .layer-tag {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #374151;
+    background: #F3F4F6;
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+
+  /* Connector */
+  .connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 0 8px;
+    padding-bottom: 20px;
+  }
+
+  .conn-label {
+    font-size: 10px;
+    color: #4B5563;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .arrow {
+    display: flex;
+    align-items: center;
+  }
+
+  .arrow-line {
+    width: 38px;
+    height: 1.5px;
+    background: #D1D5DB;
+  }
+
+  .arrow-head {
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 7px solid #D1D5DB;
+  }
+
+  /* dbt layer strip */
+  .dbt-strip {
+    background: #FFF9F8;
+    border: 1px solid #FFE4DC;
+    border-radius: 10px;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .dbt-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #FF694A;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 24px;
+  }
+
+  .layer-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .layer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .layer-pill {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 4px 14px;
+  }
+
+  .layer-count {
+    font-size: 11px;
+    color: #4B5563;
+  }
+
+  .layer-sep {
+    color: #D1D5DB;
+    margin: 0 16px;
+    font-size: 15px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #4B5563;
+    padding-top: 22px;
+    border-top: 1px solid #F3F4F6;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <h1>Relata CRM — End-to-End Analytics Pipeline</h1>
+    <p>Analytics Engineering Portfolio Project &nbsp;·&nbsp; Synthetic B2B SaaS Dataset &nbsp;·&nbsp; 28,000+ records across 6 tables</p>
+  </div>
+
+  <div class="pipeline">
+
+    <!-- Supabase -->
+    <div class="card">
+      <div class="logo-wrap">
+        <img src="https://cdn.simpleicons.org/supabase" alt="Supabase">
+      </div>
+      <div class="tool-name">Supabase</div>
+      <div class="layer-tag">Source</div>
+    </div>
+
+    <div class="connector">
+      <div class="conn-label">Capture</div>
+      <div class="arrow">
+        <div class="arrow-line"></div>
+        <div class="arrow-head"></div>
+      </div>
+    </div>
+
+    <!-- Airbyte -->
+    <div class="card">
+      <div class="logo-wrap">
+        <img src="https://cdn.simpleicons.org/airbyte" alt="Airbyte">
+      </div>
+      <div class="tool-name">Airbyte</div>
+      <div class="layer-tag">Ingestion</div>
+    </div>
+
+    <div class="connector">
+      <div class="conn-label">Load</div>
+      <div class="arrow">
+        <div class="arrow-line"></div>
+        <div class="arrow-head"></div>
+      </div>
+    </div>
+
+    <!-- Snowflake -->
+    <div class="card">
+      <div class="logo-wrap">
+        <img src="https://cdn.simpleicons.org/snowflake" alt="Snowflake">
+      </div>
+      <div class="tool-name">Snowflake</div>
+      <div class="layer-tag">Warehouse</div>
+    </div>
+
+    <div class="connector">
+      <div class="conn-label">Transform</div>
+      <div class="arrow">
+        <div class="arrow-line"></div>
+        <div class="arrow-head"></div>
+      </div>
+    </div>
+
+    <!-- dbt -->
+    <div class="card">
+      <div class="logo-wrap">
+        <img src="data:image/png;base64,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" alt="dbt" style="width:34px;height:34px;object-fit:contain;">
+      </div>
+      <div class="tool-name">dbt</div>
+      <div class="layer-tag">Transform</div>
+    </div>
+
+    <div class="connector">
+      <div class="conn-label">Publish</div>
+      <div class="arrow">
+        <div class="arrow-line"></div>
+        <div class="arrow-head"></div>
+      </div>
+    </div>
+
+    <!-- Power BI -->
+    <div class="card">
+      <div class="logo-wrap">
+        <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAA0ADcDASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAUGBwgDBP/EACkQAAEDAwMDAwUBAAAAAAAAAAABAgMEBRESEzEGByFhgbMiQUNxgvD/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAgUDBgcBBP/EACsRAAEDAwIEBAcAAAAAAAAAAAEAAgMEBRESIQZBUXETMmGxNGKBkcHR8P/aAAwDAQACEQMRAD8A7KAARACPvV5ttmjjkuNRstkVUYuhzsqn6RTHLNHCwvkcABzOwUmMc86WjJUgCEtnVdhuVdHQ0VduVEmdDNp7c4RVXyqY4RSbIQVMNQ3XC8OHUEH2Xskb4zh4IPqgAM6ggACLwr6qOjpJKmVHKxmMo3nnBnncWsbfqSljo2rGsDnOdurjOU+2Mllu9zSuoJaRItvcx9WrOMKi8exR7iuw+WLVq0pz7HO+J70ZW+BCQY3AZ255zz7BXltptLtbvMFF9r5dfXVt887vxPNxMC7SSauvLWnpL8TzfS14KbpoHj5z7NUb78Q3t+SgANvVKgACKgukKpfpsVlR5/2DVXWG2r+J6f2p8NV0ZYqmR0ksEyudziVUOa1PCVwlGA5v3P6V9BcoGHJB/vqsZ7Oyau4VpT0l+F50QVixdB9M2S5w3K30MkdTDq23One7GWq1fCrjhVLObfYbbLbqd0UpGS4nbsB6dF8Vzq2VUoezOAMb9ygALtVyAAIgACIAAiAAIv/Z" alt="Power BI" style="width:34px;height:34px;object-fit:contain;">
+      </div>
+      <div class="tool-name">Power BI</div>
+      <div class="layer-tag">Visualize</div>
+    </div>
+
+  </div>
+
+  <!-- dbt layers -->
+  <div class="dbt-strip">
+    <div class="dbt-label">dbt layers</div>
+    <div class="layer-row">
+      <div class="layer-item">
+        <div class="layer-pill">Staging</div>
+        <div class="layer-count">6 models</div>
+      </div>
+      <div class="layer-sep">→</div>
+      <div class="layer-item">
+        <div class="layer-pill">Intermediate</div>
+        <div class="layer-count">1 model</div>
+      </div>
+      <div class="layer-sep">→</div>
+      <div class="layer-item">
+        <div class="layer-pill">Marts</div>
+        <div class="layer-count">5 models</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Built by Andy Foreman &nbsp;·&nbsp; Supabase · Airbyte · Snowflake · dbt · Power BI
+  </div>
+
+</div>
+</body>
+</html>
