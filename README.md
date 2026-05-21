@@ -117,7 +117,9 @@ An interactive Power BI report built on the mart layer, featuring:
 - MRR by plan tier (bar chart)
 - Slicers for country and plan filtering with cross-report filtering
 
-Note: This report is just one example of a focused visual analysis. Analysts and data scientists can perform additional analyses in Power BI (or another BI tool), as well as predictive analytics, to answer additional business questions (see Business Questions section above).
+Note: This Subscription Overview dashboard is just one example of a focused visual analysis. Analysts and data scientists can perform additional analyses in Power BI (or another BI tool), as well as predictive analytics, to answer additional business questions (see Business Questions section above).
+
+![Subscription Overview](assets/Relata-pbi.png)
 ---
  
 ## Key Design Decisions
