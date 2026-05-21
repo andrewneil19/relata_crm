@@ -81,6 +81,7 @@ Transformations are performed by building SQL models in dbt Cloud, structured ac
 
 *Partial DAG showing the lineage for `fct_subscriptions`. Full project: 6 staging models → 
 1 intermediate model → 5 mart models.*
+
 ![DAG](assets/dbt_DAG.png)
 
 ### Data Quality
