@@ -28,10 +28,12 @@ This project was designed to answer the following business questions:
 - What is our Monthly Recurring Revenue (MRR)? MRR is the predictable, normalised revenue a SaaS company expects to receive each month from active subscriptions. MRR is the core financial metric of any subscription business.
 - How is MRR trending over time, and what is our Annual Run Rate (ARR)?
 - Which plan tier - Starter, Pro, or Enterprise - drives the most revenue?
+  
 **Subscriptions**
 - How many active subscriptions do we have, and how has that grown over time?
 - What is our churn rate (the percentage of subscriptions that have cancelled)?
 - How are subscriptions distributed across plan tiers?
+  
 **Customers**
 - Which industries and countries are our largest markets?
 - What is the average age of an active subscription?
