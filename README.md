@@ -68,8 +68,10 @@ Transformations are performed by building SQL models in dbt Cloud, structured ac
 - `stg_subscriptions`
 - `stg_subscription_events`
 - `stg_invoices`
+  
 **Intermediate** — business logic layer, enriching and combining staging models
 - `int_subscriptions_enriched` — joins subscriptions to plans, calculates MRR
+  
 **Marts** — analytics-ready tables consumed by Power BI
 - `dim_date` — date dimension generated via `dbt_utils.date_spine`
 - `dim_accounts` — account attributes for slicing and filtering
