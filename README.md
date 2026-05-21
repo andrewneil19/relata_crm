@@ -126,13 +126,13 @@ Note: This Subscription Overview dashboard is just one example of a focused visu
  
 ## Key Design Decisions
  
-**Transient tables in dev** — dbt's Snowflake adapter defaults to transient tables for all models, avoiding Fail-safe storage costs for fully reproducible transformation layers.
+**Transient tables in dev**: dbt's Snowflake adapter defaults to transient tables for all models, avoiding Fail-safe storage costs for fully reproducible transformation layers.
  
-**Canonical MRR** — MRR is derived from plan pricing (`base_price + seat_count × price_per_seat`) rather than trusting the source `monthly_amount` field directly, providing a defensible figure for downstream reporting.
+**Calculated MRR**: MRR is derived from plan pricing (`base_price + seat_count × price_per_seat`) rather than trusting the source `monthly_amount` field directly, providing a defensible figure for downstream reporting.
  
-**Range join for monthly MRR** — `fct_mrr` uses a date spine cross-joined to subscriptions, filtering on overlapping date ranges to determine which subscriptions were active in each calendar month.
+**Range join for monthly MRR**: `fct_mrr` uses a date spine cross-joined to subscriptions, filtering on overlapping date ranges to determine which subscriptions were active in each calendar month.
  
-**Plan sort order** — `dim_plans` includes a `plan_tier_order` column (Starter=1, Pro=2, Enterprise=3) to enable correct ordering in Power BI without relying on alphabetical sorting.
+**Plan sort order**: `dim_plans` includes a `plan_tier_order` column (Starter=1, Pro=2, Enterprise=3) to enable correct ordering in Power BI without relying on alphabetical sorting.
  
 ---
  
