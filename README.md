@@ -1,4 +1,4 @@
-# Relata CRM — End-to-End Analytics Engineering Project
+# Relata CRM: End-to-End Analytics Engineering Project
  
 An end-to-end analytics engineering portfolio project built on a synthetic B2B SaaS dataset. Demonstrates a modern data stack from source ingestion through transformation to business intelligence reporting.
  
