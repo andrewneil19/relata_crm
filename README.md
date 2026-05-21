@@ -78,6 +78,11 @@ Transformations are performed by building SQL models in dbt Cloud, structured ac
 - `dim_plans` — plan attributes including sort order for BI tools
 - `fct_subscriptions` — one row per subscription with status flags and derived metrics
 - `fct_mrr` — monthly MRR aggregated from active subscriptions via range join
+
+*Partial DAG showing the lineage for `fct_subscriptions`. Full project: 6 staging models → 
+1 intermediate model → 5 mart models.*
+![DAG](assets/dbt_DAG.png)
+
 ### Data Quality
 dbt tests are applied across all staging and mart models, covering:
 - Primary key uniqueness and non-null constraints
